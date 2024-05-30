@@ -1,0 +1,35 @@
+.element {
+    width: 451px;
+    height: 279px;
+    background-color: white;
+    display: grid;
+    grid-template-columns: auto auto;
+    box-shadow: 4px 4px 12px #00000026;
+}
+
+.poster {
+    width: 185px;
+}
+
+.title {
+    font-family: 'Inter';
+    font-size: 20px;
+    margin: 20px;
+}
+
+.release-date {
+    font-family: 'Inter';
+    font-size: 12px;
+    color: #827E7E;
+    margin: 20px;
+}
+
+.overview {
+    font-family: 'Inter';
+    font-size: 12px;
+    text-overflow: ellipsis;
+    margin: 20px;
+
+    height: 10px;
+    text-overflow: ellipsis;
+}

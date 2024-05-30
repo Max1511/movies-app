@@ -1,0 +1,14 @@
+body {
+    background: #F7F7F7;
+    display: flex;
+    justify-content: center;
+}
+
+main {
+    width: 1010px;
+    background: white;
+
+    @media screen and (max-width: 1000px) {
+        width: 480px;
+    }
+}

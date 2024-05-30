@@ -1,0 +1,19 @@
+.spinner, .paginaion {
+    display: flex;
+    justify-content : center;
+    margin: 50px;
+}
+
+.movie-list {
+    background-color: white;
+    list-style-type: none;
+    padding: 0;
+    display: grid;
+    justify-content : center;
+    grid-template-columns: auto auto;
+    gap: 30px;
+
+    @media screen and (max-width: 1000px) {
+        grid-template-columns: auto;
+    }
+}

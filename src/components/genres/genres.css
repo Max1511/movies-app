@@ -1,0 +1,16 @@
+.genres {
+    margin: 20px;
+    display: flex;
+    justify-content: flex-start;
+    gap: 15px;
+}
+
+.genre {
+    background-color: #FAFAFA;
+    outline: #D9D9D9 solid 1px;
+    color: #000000A6;
+    font-size: 12px;
+    opacity: 65%;
+    padding: 4px;
+    border-radius: 2px;
+}
