@@ -7,13 +7,17 @@ const SearchInput = ({tab, onChangeSearchText}) => {
 
     if (tab !== 1) return;
 
+    const onChange = function(event) {
+        onChangeSearchText(event.target.defaultValue + event.nativeEvent.data);
+    };
+
     return (
         <div className='search-input'>
-            <Input.Search
+            <Input
                 type='text'
                 placeholder='Type to search...'
                 centered='true'
-                onSearch={onChangeSearchText}
+                onChange={onChange}
             />
         </div>
     );

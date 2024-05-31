@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-//import debounce from 'lodash.debounce';
+import debounce from 'lodash.debounce';
 import { Tabs } from 'antd';
 
 import SearchInput from '../search-input';
@@ -39,6 +39,12 @@ export default class App extends Component {
         }
     ];
 
+    debouncedSearchText = debounce((text) => {
+        this.setState({
+            searchText: text
+        });
+    }, 1000);
+
     getGenre = (id) => {
         return this.state.genreList.find(genre => genre.id === id).name;
     };
@@ -50,9 +56,7 @@ export default class App extends Component {
     };
 
     onChangeSearchText = (text) => {
-        this.setState({
-            searchText: text
-        });
+        this.debouncedSearchText(text);
     };
 
     render() {

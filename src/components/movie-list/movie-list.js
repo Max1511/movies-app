@@ -74,7 +74,7 @@ export default class MovieList extends Component {
 
         const hasData = !(loading || error);
 
-        const errorMessage = error ? <ErrorIndicator /> : null;
+        const errorMessage = error ? <ErrorIndicator className='error-message'/> : null;
         const spinner = loading ? <Spin className='spinner' size='large'/> : null;
         const content = hasData ? <MovieListView movies={movies}/> : null;
         const pagination = hasData && totalPages > 1 ? <Pagination
