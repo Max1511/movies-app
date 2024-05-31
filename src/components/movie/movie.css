@@ -11,25 +11,51 @@
     width: 185px;
 }
 
+.description {
+    display: flex;
+    justify-content: space-between;
+    flex-flow: column;
+}
+
+.top {
+    margin: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
 .title {
+    height: 40px;
     font-family: 'Inter';
     font-size: 20px;
-    margin: 20px;
+    margin: 0;
+}
+
+.progress {
+    height: 0;
 }
 
 .release-date {
     font-family: 'Inter';
     font-size: 12px;
     color: #827E7E;
-    margin: 20px;
+    margin: 0 20px;
+}
+
+.bottom {
+    margin: 10px 20px 20px 20px;
+    display: flex;
+    justify-content: flex-end;
+    flex-flow: column;
+    align-items: center;
+    gap: 5px;
 }
 
 .overview {
     font-family: 'Inter';
     font-size: 12px;
     text-overflow: ellipsis;
-    margin: 20px;
+}
 
-    height: 10px;
-    text-overflow: ellipsis;
+.ant-rate-star {
+    margin: 1px !important;
 }

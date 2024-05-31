@@ -1,7 +1,7 @@
 .spinner, .paginaion {
     display: flex;
     justify-content : center;
-    margin: 50px;
+    padding: 20px;
 }
 
 .movie-list {

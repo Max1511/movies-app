@@ -64,7 +64,7 @@ export default class MovieList extends Component {
         const {tab, searchText} = this.props;
         const page = this.state.page;
 
-        this.tmdbService.getResource(tab, searchText, page)
+        this.tmdbService.getMovies(tab, searchText, page)
             .then(this.onMoviesLoaaded)
             .catch(this.onError);
     }
@@ -79,6 +79,9 @@ export default class MovieList extends Component {
         const content = hasData ? <MovieListView movies={movies}/> : null;
         const pagination = hasData && totalPages > 1 ? <Pagination
             className='paginaion'
+            size='small'
+            pageSize={movies.length}
+            pageSizeOptions={[]}
             defaultCurrent={page}
             total={totalPages}
             onChange={this.onChangePage}/> : null;

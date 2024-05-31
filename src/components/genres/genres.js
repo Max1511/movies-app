@@ -1,15 +1,25 @@
 import React from 'react';
 
+import { TMBDGenresConsumer } from '../tmdb-genres-context';
+
 import './genres.css';
 
 const Genres = ({ genreIds }) => {
     const elements = genreIds.map((id, index) => {
         return (
-            <span
-                key={index}
-                className='genre'>
-                {id}
-            </span>
+            <TMBDGenresConsumer key={index}>
+                {
+                    (getGenre) => {
+                        return (
+                            <span
+                                key={index}
+                                className='genre'>
+                                {getGenre(id)}
+                            </span>
+                        );
+                    }
+                }
+            </TMBDGenresConsumer>
         );
     });
 

@@ -4,15 +4,29 @@ import { Tabs } from 'antd';
 
 import SearchInput from '../search-input';
 import MovieList from '../movie-list';
+import TMDBService from '../../services/tmdb-service';
+import { TMBDGenresProvider } from '../tmdb-genres-context';
 
 import './app.css';
 
 export default class App extends Component {
 
+    tmdbService = new TMDBService;
+
     state = {
         tab: 1,
-        searchText: ''
+        searchText: '',
+        genreList: []
     };
+
+    componentDidMount() {
+        this.tmdbService.getGenres()
+            .then((data) => {
+                this.setState({
+                    genreList: data.genres
+                });
+            });
+    }
 
     tabs = [
         {
@@ -24,6 +38,10 @@ export default class App extends Component {
             label: 'Rated'
         }
     ];
+
+    getGenre = (id) => {
+        return this.state.genreList.find(genre => genre.id === id).name;
+    };
 
     onChangeTab = (key) => {
         this.setState({
@@ -50,10 +68,12 @@ export default class App extends Component {
                     tab={this.state.tab}
                     onChangeSearchText={this.onChangeSearchText}
                 />
-                <MovieList
-                    tab={this.state.tab}
-                    searchText={this.state.searchText}
-                />
+                <TMBDGenresProvider value={this.getGenre}>
+                    <MovieList
+                        tab={this.state.tab}
+                        searchText={this.state.searchText}
+                    />
+                </TMBDGenresProvider>
             </main>
         );
     }
