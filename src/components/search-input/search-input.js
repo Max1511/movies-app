@@ -3,9 +3,7 @@ import { Input } from 'antd';
 
 import './search-input.css';
 
-const SearchInput = ({tab, onChangeSearchText}) => {
-
-    if (tab !== 1) return;
+const SearchInput = ({onChangeSearchText}) => {
 
     const onChange = function(event) {
         onChangeSearchText(event.target.defaultValue + event.nativeEvent.data);

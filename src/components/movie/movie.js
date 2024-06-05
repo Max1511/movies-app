@@ -24,6 +24,10 @@ const Movie = ({ movie }) => {
         return true;
     };
 
+    const onRated = (rating) => {
+        localStorage.setItem(movie.id, rating);
+    };
+
     const vote = movie.vote_average;
     const progressColor = vote < 3 ? '#E90000' : vote < 5 ? '#E97E00' : vote < 7 ? '#E9D100' : '#66E900';
 
@@ -46,13 +50,20 @@ const Movie = ({ movie }) => {
                         size='small'
                         strokeColor={progressColor}
                         format={percent => (percent * 0.1).toFixed(1)}
-                        percent={vote * 10}/>
+                        percent={vote * 10}
+                    />
                 </div>
                 {dateElement}
-                <Genres genreIds={movie.genre_ids}/>
+                <Genres genreIds={movie.genre_ids} genres={movie.genres}/>
                 <div className='bottom'>
                     <p className='overview'>{trimText(movie.overview, 150)}</p>
-                    <Rate allowHalf='true' count={10}/>
+                    <Rate
+                        defaultValue={movie.userRating ?? 0}
+                        allowHalf='true'
+                        allowClear='false'
+                        count={10}
+                        onChange={onRated}
+                    />
                 </div>
             </div>
         </div>

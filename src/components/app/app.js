@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import debounce from 'lodash.debounce';
 import { Tabs } from 'antd';
 
-import SearchInput from '../search-input';
-import MovieList from '../movie-list';
+import SearchTab from '../search-tab';
+import RatedTab from '../rated-tab';
 import TMDBService from '../../services/tmdb-service';
 import { TMBDGenresProvider } from '../tmdb-genres-context';
 
@@ -59,6 +59,16 @@ export default class App extends Component {
         this.debouncedSearchText(text);
     };
 
+    renderTab = () => {
+        return this.state.tab == 1 ? (
+            <SearchTab
+                onChangeSearchText={this.onChangeSearchText}
+                searchText={this.state.searchText}
+            />
+        ) :
+            (<RatedTab/>);
+    };
+
     render() {
         return(
             <main className='main'>
@@ -68,15 +78,8 @@ export default class App extends Component {
                     centered
                     onChange={this.onChangeTab}
                 />
-                <SearchInput
-                    tab={this.state.tab}
-                    onChangeSearchText={this.onChangeSearchText}
-                />
                 <TMBDGenresProvider value={this.getGenre}>
-                    <MovieList
-                        tab={this.state.tab}
-                        searchText={this.state.searchText}
-                    />
+                    {this.renderTab()}
                 </TMBDGenresProvider>
             </main>
         );

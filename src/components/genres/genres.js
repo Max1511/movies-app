@@ -4,7 +4,11 @@ import { TMBDGenresConsumer } from '../tmdb-genres-context';
 
 import './genres.css';
 
-const Genres = ({ genreIds }) => {
+const Genres = ({ genreIds, genres }) => {
+    if (typeof genreIds === 'undefined') {
+        genreIds = genres.map((genre) => genre.id);
+    }
+
     const elements = genreIds.map((id, index) => {
         return (
             <TMBDGenresConsumer key={index}>
